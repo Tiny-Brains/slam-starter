@@ -1,0 +1,30 @@
+{
+  "game": "slam",
+  "sequence": "starter",
+  "saved_maps": "saved-maps",
+  "vars": { "max_turns": 1000, "strike_ceiling": 5 },
+  "visits": [
+    {
+      "id": "fresh",
+      "seed": 20261115,
+      "map": "simple-room",
+      "location": "home-a",
+      "saved_map": "reset",
+      "seat_count": 1,
+      "seats": [
+        { "seat": 0, "weights": "model.onnx", "manifest": "manifest.json", "label": "slam-starter" }
+      ]
+    },
+    {
+      "id": "return",
+      "seed": 20261116,
+      "map": "simple-room-return",
+      "location": "home-a",
+      "saved_map": "resume",
+      "seat_count": 1,
+      "seats": [
+        { "seat": 0, "weights": "model.onnx", "manifest": "manifest.json", "label": "slam-starter" }
+      ]
+    }
+  ]
+}

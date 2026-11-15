@@ -1,0 +1,62 @@
+{
+  "abi": "orion:model@1.0.0",
+  "artifact": "model.onnx",
+  "description": "SLAM's Phase 3 adapter fixture: sensor arrays and one map window in, a wheel command, a map update and memory out.",
+  "format": "onnx",
+  "inputs": [
+    {
+      "adapter": { "tensor": [{ "var": "sensors.lidar_mm" }, "f32"] },
+      "dtype": "f32",
+      "name": "lidar",
+      "shape": [360]
+    },
+    {
+      "adapter": { "tensor": [{ "var": "sensors.encoders" }, "i32"] },
+      "dtype": "i32",
+      "name": "encoders",
+      "shape": [2]
+    },
+    {
+      "adapter": { "tensor": [{ "var": "sensors.gyro_urad_s" }, "f32"] },
+      "dtype": "f32",
+      "name": "gyro",
+      "shape": [3]
+    },
+    {
+      "adapter": { "tensor": [{ "var": "sensors.accel_mm_s2" }, "f32"] },
+      "dtype": "f32",
+      "name": "accel",
+      "shape": [3]
+    },
+    {
+      "adapter": {
+        "reshape": [
+          { "tensor": [{ "var": "map_window.cells" }, "u8"] },
+          [1, 1, 256, 256]
+        ]
+      },
+      "dtype": "u8",
+      "name": "map",
+      "shape": [1, 1, 256, 256]
+    },
+    {
+      "adapter": {
+        "if": [
+          { "var": "memory" },
+          { "tensor": [{ "var": "memory" }] },
+          { "zeros": [[1, 4], "f32"] }
+        ]
+      },
+      "dtype": "f32",
+      "name": "memory_in",
+      "shape": [1, 4]
+    }
+  ],
+  "name": "tb.slam-nano",
+  "outputs": [
+    { "dtype": "i16", "name": "wheel_speed", "shape": [1, 2] },
+    { "dtype": "i32", "name": "map_update", "shape": [1, 2049, 3] },
+    { "dtype": "f32", "name": "memory", "shape": [1, 4] }
+  ],
+  "version": "1"
+}

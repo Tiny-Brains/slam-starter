@@ -1,0 +1,15 @@
+{
+  "game": "slam",
+  "vars": { "max_turns": 1000, "strike_ceiling": 5 },
+  "rows": [
+    {
+      "id": "first-run",
+      "seed": 20261115,
+      "seat_count": 1,
+      "map": "simple-room",
+      "seats": [
+        { "seat": 0, "weights": "../model.onnx", "manifest": "../manifest.json", "label": "slam-starter" }
+      ]
+    }
+  ]
+}

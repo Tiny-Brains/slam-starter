@@ -1,0 +1,13 @@
+# The local registry `tinybrains` reads from this checkout.
+#
+# In the TinyBrains monorepo the cartridge is the sibling slam checkout's build output. A published
+# starter replaces this with the release coordinate when the first SLAM release ships:
+#
+#   [games.slam]
+#   release = "engine-<digest>"
+#
+# A `path` entry reads a built artifact set -- ../slam/build.sh writes that dist/ -- and its engine
+# digest is whatever the component hashes to.
+[games.slam]
+name = "SLAM"
+path = "../slam/dist"
